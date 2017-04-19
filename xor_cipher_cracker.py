@@ -81,16 +81,3 @@ class XORCipherCracker():
     def repeat_key_to_length(self, key, cipher_text_length):
         repeat_key = (key * ((cipher_text_length / len(key)) + 1))
         return repeat_key[:cipher_text_length]
-
-def convert_hex_to_binary(hex):
-    hex = hex.replace(" ", "")
-    binary = [
-         '0000','0001','0010','0011',
-         '0100','0101','0110','0111',
-         '1000','1001','1010','1011',
-         '1100','1101','1110','1111'
-         ]
-    binary_string = ''
-    for i in range(len(hex)):
-        binary_string += binary[int(hex[i], base=16)]
-    return binary_string
