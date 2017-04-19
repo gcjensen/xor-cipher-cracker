@@ -2,7 +2,7 @@
 An attack on the repeating key [XOR Cipher](https://en.wikipedia.org/wiki/XOR_cipher). The script attempts to decipher hex encrypted using the XOR Cipher with a repeating key.
 
 ## Example Usage
-[example.py](/example.py) shows an example of using the XorCipherCracker class in [xor_cipher_cracker.py](/xor_cipher_cracker.py) to decrypt the hex contained within cipher-text.txt.
+[example.py](/example.py) shows an example of using [xor_cipher_cracker.py](/xor_cipher_cracker.py) to decrypt the hex contained within cipher-text.txt.
 
 ### Running example.py
 
