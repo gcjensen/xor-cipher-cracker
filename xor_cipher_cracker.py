@@ -16,7 +16,6 @@ class XORCipherCracker():
         possible_keys = ["".join(bit) for bit in itertools.product("01", repeat=most_likely_key_length)]
 
         keys = self.find_likely_keys(possible_keys, cipher_text_in_binary)
-        print(len(keys))
 
         decryptions = {}
         for key in keys:
@@ -53,11 +52,7 @@ class XORCipherCracker():
 
     def find_likely_keys(self, possible_keys, cipher_text_in_binary):
         keys = []
-        count = 0
         for possible_key in possible_keys:
-            count += 1
-            if (count % 100000 == 0):
-                print(count)
             if self.does_key_produce_only_legal_chars(possible_key, cipher_text_in_binary):
                 keys.append(possible_key)
         return keys
