@@ -1,5 +1,5 @@
 # xor-cipher-cracker
-An attack on the repeating key XOR Cipher. The script attempts to decipher a pie1	§ce of ciphertext encrypted using the XOR Cipher with a repeating key.
+An attack on the repeating key XOR Cipher. The script attempts to decipher a piece of ciphertext encrypted using the XOR Cipher with a repeating key.
 
 ## Example Usage
 example.py shows an example of using the XorCipherCracker class to decrypt the hex contained within cipher-text.txt.
