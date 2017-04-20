@@ -26,11 +26,11 @@ class XORCipherCracker():
         return decryptions
 
     def find_likely_key_lengths(self, cipher_text):
-        key_lengths = {}
+        possible_key_lengths = {}
         for key_length in range(2, 32):
-            hamming_distances = 0
-            position = 0
-            counter = 0
+            hamming_distances = position = counter = 0
+            # calculate the hamming distance between sequential pieces of ciphertext,
+            # with the size of the pieces being determined by the key length being test.
             while(position + 2 * key_length <= len(cipher_text)):
                 section_one = cipher_text[position:position+key_length]
                 position += key_length
@@ -39,10 +39,14 @@ class XORCipherCracker():
                 hamming_distances += self.calculate_hamming_distance(section_one, section_two)
                 counter += 1
             average_hamming_distance = hamming_distances / float(counter)
-            key_lengths[key_length] = average_hamming_distance / float(key_length)
 
-        return sorted(key_lengths.iteritems(), key=operator.itemgetter(1), reverse=False)
+            # normalise the average hamming distance by dividing by key length
+            possible_key_lengths[key_length] = average_hamming_distance / float(key_length)
 
+        # key length with lowest normalised average hamming distance is most likely to be the correct one
+        return sorted(possible_key_lengths.iteritems(), key=operator.itemgetter(1), reverse=False)
+
+    # https://en.wikipedia.org/wiki/Hamming_distance
     def calculate_hamming_distance(self, string_one, string_two):
         count = 0.0
         for i in range(len(string_one)):
