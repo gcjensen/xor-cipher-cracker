@@ -30,7 +30,7 @@ class XORCipherCracker():
         for key_length in range(2, 32):
             hamming_distances = position = counter = 0
             # calculate the hamming distance between sequential pieces of ciphertext,
-            # with the size of the pieces being determined by the key length being test.
+            # with the size of the pieces being determined by the key length being tested.
             while(position + 2 * key_length <= len(cipher_text)):
                 section_one = cipher_text[position:position+key_length]
                 position += key_length
@@ -54,6 +54,7 @@ class XORCipherCracker():
                 count += 1
         return count
 
+    # find the keys that produce a plaintext containing only the legal characters
     def find_likely_keys(self, possible_keys, cipher_text_in_binary):
         keys = []
         for possible_key in possible_keys:
